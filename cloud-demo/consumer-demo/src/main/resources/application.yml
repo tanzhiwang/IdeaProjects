@@ -11,6 +11,14 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+#  500毫秒没有获取连接就抛出异常
+  ConnectionTimeOut: 500
+#  建立连接但是超过两秒没有读取到数据也抛出异常
+  ReadTimeOut: 2000
 
 
 #轮询改随机，然而实际中用不到。。。
