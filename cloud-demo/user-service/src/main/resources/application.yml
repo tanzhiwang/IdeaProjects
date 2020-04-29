@@ -1,0 +1,33 @@
+server:
+#  本机的8081端口不知道被什么占用了，换8082吧
+  port: 8082
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/yun6
+    username: root
+    password: monkey1024
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo
+eureka:
+
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+
+#    最小过期时长，秒为单位(90没发心跳，就认为已经挂掉)
+    lease-expiration-duration-in-seconds: 90
+#    最小心跳周期（续约周期），秒为单位
+    lease-renewal-interval-in-seconds: 30
+#  server:
+#    enableSelfPreservation: false
+
+#logging:
+#  level:
+#    c.n: debug
+#    org: debug
+#    cn: debug
