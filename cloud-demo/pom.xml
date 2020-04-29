@@ -11,6 +11,7 @@
         <module>user-service</module>
         <module>consumer-demo</module>
         <module>eureka-server</module>
+        <module>gateway</module>
     </modules>
     <!--用来做整个项目的版本控制，也就是项目中所有要使用到的jar包的版本都集中由父工程管理。
     这样你在写其他工程pom文件中maven依赖时就不需要写版本号了。当然所有的项目都要先继承它才行。-->
