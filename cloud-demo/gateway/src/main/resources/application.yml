@@ -13,14 +13,32 @@ eureka:
 #     把用户的请求指向微服务
 #     指定转发的url路径
 #      url: http://127.0.0.1:8082  url就写死了，不好，要做负载均衡，通过服务id去找可用的服务实例
-#        底层去调用eureka,去拉取服务列表，例用负载均衡算法，动态地拉取获取一个服务地址
+#        底层去调用eureka,去拉取服务列表，利用负载均衡算法，动态地拉取获取一个服务地址
 spring:
   application:
     name: gateway
 zuul:
   prefix: /api
   routes:
-    user-service: /user/**
+    user-service:
+      path: /user/**
+      serviceId: user-service
+      strip=prefix: false
   ignored-services:
   - consumer-service
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+#            超时时长
+            timeoutInMillisecond: 6000
+ribbon:
+#  连接超时
+  ConnectionTimeout: 500
+#  读取超时  （1000（默认）+1000（默认））*（当前服务重试次数：0+1）*（其他服务重试次数：1+1）=4000
+  ReadTimeout: 2000
+#  不重试
+  MaxAutoRetriesNextServer: 0
 
