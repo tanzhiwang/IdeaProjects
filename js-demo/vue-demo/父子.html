@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <introduce :title="msg"></introduce>
+    <hr/>
+    <for-component></for-component>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //局部组件：
+    const introduce={
+        template:"<h1>{{title}}</h1>",
+        props:['title']
+    };
+    const forComponent={
+        template: "<ul><li v-for='item in items'>{{item}}</li></ul>",
+        props: {
+            items:{
+                type:Array,
+                default:['java']
+            }
+        }
+    };
+    const app=new Vue({
+        el:"#app",//element,vue作用的标签,确定作用范围
+        data:{//所有属性写在data中
+            msg:"大家好，我是渣渣辉！",
+            lessons:['java','php','python']
+        },
+        components:{
+            // counter:counter
+            //counter//key和value完全一致，可以简写为一个
+            introduce,forComponent
+        }
+    });
+</script>
+</body>
+</html>
