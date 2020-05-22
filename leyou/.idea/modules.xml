@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/leyou.iml" filepath="$PROJECT_DIR$/.idea/leyou.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ly-gateway/ly-gateway.iml" filepath="$PROJECT_DIR$/ly-gateway/ly-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ly-item/ly-item.iml" filepath="$PROJECT_DIR$/ly-item/ly-item.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ly-registry/ly-registry.iml" filepath="$PROJECT_DIR$/ly-registry/ly-registry.iml" />
+    </modules>
+  </component>
+</project>
