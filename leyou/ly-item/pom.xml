@@ -11,6 +11,11 @@
 
     <groupId>com.leyou.service</groupId>
     <artifactId>ly-item</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ly-item-interface</module>
+        <module>ly-item-service</module>
+    </modules>
 
 
 </project>
