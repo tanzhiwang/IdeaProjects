@@ -19,7 +19,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+<!--spring-cloud-starter-netflix-eureka-client和spring-cloud-netflix-eureka-client是两个东西！！！！-->
+<!--spring-cloud-starter-netflix-eureka-client和spring-cloud-netflix-eureka-client是两个东西！！！！-->
+<!--spring-cloud-starter-netflix-eureka-client和spring-cloud-netflix-eureka-client是两个东西！！！！-->
         </dependency>
     </dependencies>
 
