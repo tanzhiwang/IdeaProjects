@@ -14,6 +14,8 @@ eureka:
 #    instance-id: ${spring.application.name}:${server.port}
 zuul:
   prefix: /api # 添加路由前缀
+  routes:
+    item-service: /item/**
 #  retryable: true
 hystrix:
   command:
