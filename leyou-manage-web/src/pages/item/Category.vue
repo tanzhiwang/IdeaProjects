@@ -1,8 +1,8 @@
 <template>
   <v-card>
       <v-flex xs12 sm10>
+        <!--放在:isEdit="isEdit"上面一行的内容    :treeData="treeData"-->
         <v-tree url="/item/category/list"
-                :treeData="treeData"
                 :isEdit="isEdit"
                 @handleAdd="handleAdd"
                 @handleEdit="handleEdit"
