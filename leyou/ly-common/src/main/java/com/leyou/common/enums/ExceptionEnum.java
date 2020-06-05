@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 //枚举是具有固定实例个数的类，提前创建好了实例
 public enum ExceptionEnum {
     PRICE_CANNOT_BE_NULL(400,"价格不能为空！"),//等同于public static final ...=new ...
-
+    CATEGORY_NOT_FUND(404,"商品分类没查到"),
 
     ;
     private int code;
