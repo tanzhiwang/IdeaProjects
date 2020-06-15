@@ -85,7 +85,7 @@
       },
       methods:{
           loadBrands(){
-            this.$http.get("/brand/page",{
+            this.$http.get("/item/brand/page",{
               params:{
                 page:this.pagination.page,//当前页
                 rows:this.pagination.rowsPerPage,//每页大小
@@ -93,6 +93,8 @@
                 desc:this.pagination.descending,//是否降序
                 key:this.key,//搜索条件
               }
+            }).then(resp=>{
+              console.log()
             })
           }
       }
