@@ -61,11 +61,11 @@
           //   }
           // }).then(resp=>{})
         this.brands=[
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"0"},
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"0"},
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"0"},
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"0"},
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"0"},
+          {id:2032,name: "OPPO",image:"1.jpg",letter:"O"},
+          {id:2033,name: "飞利浦",image:"2.jpg",letter:"F"},
+          {id:2034,name: "华为",image:"3.jpg",letter:"H"},
+          {id:2036,name: "酷派",image:"4.jpg",letter:"K"},
+          {id:2037,name: "魅族",image:"5.jpg",letter:"M"},
         ];
         this.totalBrands=15;
 
@@ -74,7 +74,14 @@
       },
       watch:{
         key(){
-          this.loadBrands();
+          if(this.pagination.page!=1){
+            // alert("page不等于1,page等于"+this.pagination.page);
+            this.pagination.page=1;
+          }else{
+            // alert("page等于"+this.pagination.page);
+            //去后台查询
+            this.loadBrands();
+          }
         },
         pagination:{
           deep:true,
@@ -85,6 +92,7 @@
       },
       methods:{
           loadBrands(){
+            this.loading=true;
             this.$http.get("/item/brand/page",{
               params:{
                 page:this.pagination.page,//当前页
@@ -94,7 +102,9 @@
                 key:this.key,//搜索条件
               }
             }).then(resp=>{
-              console.log()
+              this.brands=resp.data.items;
+              this.totalBrands=resp.data.total;
+              this.loading=false;
             })
           }
       }
