@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--vue基本使用-->
+    <button @click="handleClick">点我</button><br>
+    <input type="text" v-model="num"><button @click="num++">+</button>
+    <h1>
+        <span v-text="name"></span> 非常帅<br>
+        还有着{{num}}个亿的人民币
+    </h1>
+    <span v-text="name"></span> 非常帅<br>
+    <span v-html="name"></span> 非常帅<br>
+    <!--v-model-->
+    <hr/>
+    <h1>传智播客已开设下列课程：</h1>
+    <input type="checkbox" v-model="lessons" value="Java" /> Java<br>
+    <input type="checkbox" v-model="lessons" value="Python" /> Python<br>
+    <input type="checkbox" v-model="lessons" value="IOS" /> IOS<br>
+
+    <h1>
+        您已选择下列课程：{{lessons.join(",")}}
+    </h1>
+    <hr>
+    <!--v-on-->
+    <div style="width: 100px;height: 100px;background-color: cornsilk" @click="print('div')">
+        div
+        <!--@click.stop:事件修饰符，阻止事件冒泡，阻止button向div报告-->
+        <button @click.stop="print('button')">点我试试</button>
+        <a href="http://www.baidu.com" @click.prevent.stop="print('百度')">百度</a>
+    </div>
+    <hr>
+    <!--v-for-->
+    <ul>
+        <li v-for="(u,i) in users" :key="i">
+            {{i}},{{u.name+","+u.gender+","+u.age}}<!--i是数组角标-->
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(value,key,index) in users[0]">
+            {{index+"_"+key+":"+value}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="i in 5">
+            {{i}}<!--1到5，不是0到4-->
+        </li>
+    </ul>
+    <hr>
+    <!--v-if-->
+    <button @click="show = !show">点我呀</button>
+    <br>
+    <h1 v-if="show">
+        看到我啦？！
+    </h1>
+    <h1 v-show="show">
+        看到我啦？！show
+    </h1>
+    <ul>
+        <li v-for="i in 5" >
+            <span v-if="i%2===0">偶数:{{i}}</span>
+            <span v-else style="background-color: #cccccc;">奇数:{{i}}</span>
+        </li>
+    </ul>
+</div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app=new Vue({
+            el:"#app",//element,vue作用的标签
+            data:{
+                name:"",
+                num:1,
+                lessons:[],
+                users:[
+                    {name:'柳岩', gender:'女', age: 21},
+                    {name:'峰哥', gender:'男', age: 18},
+                    {name:'范冰冰', gender:'女', age: 24},
+                    {name:'刘亦菲', gender:'女', age: 18},
+                    {name:'古力娜扎', gender:'女', age: 25}
+                ],
+                show:true,
+            },
+            methods:{
+                handleClick(){
+                    console.log(this)
+                    console.log("hello");
+                },
+                print(msg){
+                    console.log(msg);
+                },
+            },
+            created(){
+                //向后台发起ajax请求，完成对data数据的初始化
+                //setTimeout(()=>this.name="hao哥",1000);
+
+                this.name="<font color='blue'>hao哥 真的</font>";//this指向vue的实例
+
+            }
+        });
+    </script>
+</body>
+</html>
