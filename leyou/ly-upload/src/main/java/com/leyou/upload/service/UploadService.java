@@ -35,6 +35,7 @@ public class UploadService {
             //校验文件类型
             String contentType = file.getContentType();
             if(!prop.getAllowTypes().contains(contentType)){
+                log.info(prop.getAllowTypes().toString());
                 throw new LyException(ExceptionEnum.INVALID_FILE_TYPE);
             }
             //校验文件内容
