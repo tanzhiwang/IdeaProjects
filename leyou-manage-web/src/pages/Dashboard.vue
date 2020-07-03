@@ -2,6 +2,7 @@
   <v-container fluid grid-list-md>
     <v-layout row wrap>
       <v-flex xs10 md6>
+        hello24
         <v-card>
           <v-card-text class="px2">
             <div ref="sale" style="width: 100%;height:350px"></div>
