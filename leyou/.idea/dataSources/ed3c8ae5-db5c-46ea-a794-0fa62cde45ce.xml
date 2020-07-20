@@ -1576,7 +1576,7 @@ brand_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="255" name="images">
+    <column id="350" parent="255" name="image">
       <Position>4</Position>
       <Comment>商品的图片，多个图片以‘,’分割</Comment>
       <DataType>varchar(1000)|0s</DataType>
@@ -1859,7 +1859,7 @@ brand_id</ColNames>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="393" parent="260" name="specifications">
+    <column id="393" parent="260" name="generic_spec">
       <Position>3</Position>
       <Comment>全部规格参数数据</Comment>
       <DataType>varchar(3000)|0s</DataType>
@@ -1872,6 +1872,7 @@ brand_id</ColNames>
       <Comment>特有规格参数及可选值信息，json格式</Comment>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="395" parent="260" name="packing_list">
@@ -1894,7 +1895,7 @@ brand_id</ColNames>
       <DataType>varchar(3000)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="398" parent="260" name="special">
+    <column id="398" parent="260" name="special_spec">
       <Position>8</Position>
       <Comment>特殊规格参数</Comment>
       <DataType>varchar(1500)|0s</DataType>
@@ -1910,6 +1911,7 @@ brand_id</ColNames>
       <Comment>库存对应的商品sku id</Comment>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="401" parent="261" name="seckill_stock">

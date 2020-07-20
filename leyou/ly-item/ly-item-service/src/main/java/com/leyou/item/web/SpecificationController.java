@@ -4,6 +4,7 @@ package com.leyou.item.web;
 import com.leyou.item.pojo.SpecGroup;
 import com.leyou.item.pojo.SpecParam;
 import com.leyou.item.service.SpecificationService;
+import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,19 @@ public class SpecificationController {
     }
 
     /**
-     * 根据组id查询参数
-     * @param gid
+     * 查询参数集合
+     * @param gid 组id
+     * @param cid 分类id
+     * @param searching 是否搜索
      * @return
      */
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> queryParamByGid(@RequestParam("gid")Long gid){
-        return ResponseEntity.ok(specService.queryParamByGid(gid));
+    public ResponseEntity<List<SpecParam>> queryParamByParamList(
+            @RequestParam(value = "gid",required = false)Long gid,
+            @RequestParam(value = "cid",required = false)Long cid,
+            @RequestParam(value = "searching",required = false)Boolean searching
+            ){
+        return ResponseEntity.ok(specService.queryParamList(gid,cid,searching));
+
     }
 }

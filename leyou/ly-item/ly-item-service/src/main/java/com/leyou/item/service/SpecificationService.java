@@ -43,4 +43,17 @@ public class SpecificationService {
         }
         return list;
     }
+
+    public List<SpecParam> queryParamList(Long gid, Long cid, Boolean searching) {
+        SpecParam param=new SpecParam();
+        param.setGroupId(gid);
+        param.setCid(cid);
+        param.setSearching(searching);
+
+        List<SpecParam> list = paramMapper.select(param);//select根据对象中非空属性来查询
+        if(CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEnum.SPEC_PARAM_NOT_FUND);
+        }
+        return list;
+    }
 }
