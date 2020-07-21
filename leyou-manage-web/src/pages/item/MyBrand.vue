@@ -1,8 +1,8 @@
 <template>
     <div>
-      <v-layout class="px-3 pb-2">
+      <v-layout class="px-3 pb-2 ">
         <v-flex xs2>
-          <v-btn  color="info">新增品牌</v-btn>
+          <v-btn color="info">新增品牌</v-btn>
         </v-flex>
         <v-spacer/>
         <v-flex xs4>
@@ -18,10 +18,10 @@
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">
-          <td class="text-xs-center">{{props.item.id}}</td>
-          <td class="text-xs-center">{{props.item.name}}</td>
+          <td class="text-xs-center">{{ props.item.id }}</td>
+          <td class="text-xs-center">{{ props.item.name }}</td>
           <td class="text-xs-center"><img :src="props.item.image" alt=""></td>
-          <td class="text-xs-center">{{props.item.letter}}</td>
+          <td class="text-xs-center">{{ props.item.letter }}</td>
           <td class="text-xs-center">
             <v-btn flat icon color="info">
               <v-icon>edit</v-icon>
@@ -36,75 +36,73 @@
 </template>
 
 <script>
+    import VSpec from "./specification/Specification";
     export default {
         name: "MyBrand",
-      data(){
+      components: {VSpec},
+      data() {
           return{
             headers:[
-              {text: "品牌id", value: "id", align: 'center' , sortable: true},
-              {text: "品牌名称", value: "name", align: 'center' , sortable: false},
-              {text: "品牌LOGO", value: "image", align: 'center' , sortable: false},
-              {text: "品牌首字母", value: "letter", align: 'center' , sortable: true},
-              {text: "操作",  align: 'center' , sortable: false},
+              {text: '品牌id', align: 'center', sortable: true, value: 'id'},
+              {text: '品牌名称', align: 'center', sortable: false, value: 'name'},
+              {text: '品牌LOGO', align: 'center', sortable: false, value: 'image'},
+              {text: '品牌首字母', align: 'center', sortable: true, value: 'letter'},
+              {text: '操作', align: 'center',sortable: false},
             ],
             brands:[],
             pagination:{},
             totalBrands:0,
             loading:false,
-            key:"",//搜索条件
+            key:"",  //搜索条件
           }
       },
-      created(){
-          // this.$http.get("/brand/page",{
-          //   params:{
-          //     page:1,
-          //   }
-          // }).then(resp=>{})
-        this.brands=[
-          {id:2032,name: "OPPO",image:"1.jpg",letter:"O"},
-          {id:2033,name: "飞利浦",image:"2.jpg",letter:"F"},
-          {id:2034,name: "华为",image:"3.jpg",letter:"H"},
-          {id:2036,name: "酷派",image:"4.jpg",letter:"K"},
-          {id:2037,name: "魅族",image:"5.jpg",letter:"M"},
+      created() {
+          this.brands = [
+          {id:1,name:'小米',image:'1.jpg',letter:'m'},
+          {id:2,name:'华为',image:'2.jpg',letter:'h'},
+          {id:3,name:'oppo',image:'3.jpg',letter:'o'},
+          {id:4,name:'meizu',image:'4.jpg',letter:'m'},
+          {id:5,name:'vivo',image:'5.jpg',letter:'v'},
+          {id:6,name:'iphone',image:'6.jpg',letter:'i'},
         ];
-        this.totalBrands=15;
+        this.totalBrands = 15;
 
-        //去后台查询
-        this.loadBrands();
+         //在http,js和config.js中定义了axios的默认路径
+        // 'http://api.leyou.com/api'
+       /*   this.$http.get("/brand/page",{
+            params:{
+              page:1,
+            }
+          }).then(resp => {})*/
+
       },
       watch:{
-        key(){
-          if(this.pagination.page!=1){
-            // alert("page不等于1,page等于"+this.pagination.page);
-            this.pagination.page=1;
-          }else{
-            // alert("page等于"+this.pagination.page);
-            //去后台查询
-            this.loadBrands();
-          }
-        },
+          key(){
+            this.pagination.page = 1;
+          },
         pagination:{
-          deep:true,
-          handler(){
-            this.loadBrands();
-          }
+            deep:true,
+            handler(){
+              this.loadBrands();
+            }
         }
       },
+
       methods:{
           loadBrands(){
-            this.loading=true;
+            this.loading = true;
             this.$http.get("/item/brand/page",{
               params:{
                 page:this.pagination.page,//当前页
                 rows:this.pagination.rowsPerPage,//每页大小
                 sortBy:this.pagination.sortBy,//排序字段
                 desc:this.pagination.descending,//是否降序
-                key:this.key,//搜索条件
+                key:this.key//搜索条件
               }
-            }).then(resp=>{
-              this.brands=resp.data.items;
-              this.totalBrands=resp.data.total;
-              this.loading=false;
+            }).then(resp => {
+              this.brands = resp.data.items;
+              this.totalBrands = resp.data.total;
+              this.loading = false;
             })
           }
       }

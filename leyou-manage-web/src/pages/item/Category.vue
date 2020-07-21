@@ -1,7 +1,6 @@
 <template>
   <v-card>
       <v-flex xs12 sm10>
-        <!--放在:isEdit="isEdit"上面一行的内容    :treeData="treeData"-->
         <v-tree url="/item/category/list"
                 :isEdit="isEdit"
                 @handleAdd="handleAdd"
@@ -14,12 +13,10 @@
 </template>
 
 <script>
-  import {treeData} from '../../mockDB'
   export default {
     name: "category",
     data() {
       return {
-        treeData: treeData,
         isEdit:true
       }
     },

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <quilleditor v-model="content"
                  ref="myTextEditor"
