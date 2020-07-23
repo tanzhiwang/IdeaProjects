@@ -32,6 +32,21 @@ public class NumberUtils {
     }
 
     /**
+     * 将字符串格式的数字转为double类型的数字
+     * @param s
+     * @return
+     */
+    public static double toDouble(String s){
+        if(s == null){
+            return 0;
+        }
+        if(!isDigit(s)){
+            return 0;
+        }
+        return Double.valueOf(s);
+    }
+
+    /**
      * 将一个小数精确到指定位数
      * @param num
      * @param scale
