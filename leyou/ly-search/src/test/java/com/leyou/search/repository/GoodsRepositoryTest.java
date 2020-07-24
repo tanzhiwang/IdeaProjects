@@ -15,7 +15,6 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -47,15 +46,15 @@ public class GoodsRepositoryTest {
         do {
             //查询spu的信息
             PageResult<Spu> result = goodsClient.querySpuByPage(page, rows, true, null);
-            System.out.println("----------goodrepositorytest----------result:" + result);
+            //System.out.println("----------goodrepositorytest----------result:" + result);
             List<Spu> spuList = result.getItems();
-            System.out.println("----------goodrepositorytest----------spuList:" + spuList);
+            //System.out.println("----------goodrepositorytest----------spuList:" + spuList);
             if (CollectionUtils.isEmpty(spuList)) {
                 break;
             }
             //构建为goods
             List<Goods> goodsList = spuList.stream().map(searchService::buildGoods).collect(Collectors.toList());
-            System.out.println("----------goodrepositorytest----------goodsList:"+goodsList);
+            //System.out.println("----------goodrepositorytest----------goodsList:"+goodsList);
             //存入索引库
             goodsRepository.saveAll(goodsList);
             //翻页

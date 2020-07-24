@@ -69,7 +69,7 @@ public class JsonUtils {
                 System.out.println("json的开头是[");
                 json=json.substring(1,json.length()-1);
             }*/
-            System.out.println("----------jsonutils----------:json" + json);
+            //System.out.println("----------jsonutils----------:json" + json);
             return mapper.readValue(json, mapper.getTypeFactory().constructMapType(Map.class, kClass, vClass));
         } catch (IOException e) {
             logger.error("json解析出错：" + json, e);

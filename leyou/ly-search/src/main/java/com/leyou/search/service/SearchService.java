@@ -75,16 +75,16 @@ public class SearchService {
         //查询商品详情
         SpuDetail spuDetail = goodsClient.queryDetailById(spuId);
         //获取通用规格参数
-        System.out.println("---------searchservice-----------spuDetail.getGenericSpec():" + spuDetail.getGenericSpec());
+        //System.out.println("---------searchservice-----------spuDetail.getGenericSpec():" + spuDetail.getGenericSpec());
         Map<Long, String> genericSpec = JsonUtils.toMap(spuDetail.getGenericSpec(), Long.class, String.class);
-        System.out.println("---------searchservice-----------genericSpec:" + genericSpec);
+        //System.out.println("---------searchservice-----------genericSpec:" + genericSpec);
         //获取特有规格参数
         Map<Long, List<String>> specialSpec = JsonUtils.
                 nativeRead(spuDetail.getSpecialSpec(), new TypeReference<Map<Long, List<String>>>() {
                 });
         //规格参数,key是规格参数的名字，值是规格参数的值
         Map<String, Object> specs = new HashMap<>();
-        System.out.println("----------searchservice----------params:" + params);
+        //System.out.println("----------searchservice----------params:" + params);
         for (SpecParam param : params) {
             //规格名称
             String key = param.getName();
